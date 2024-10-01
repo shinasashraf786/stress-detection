@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Well-being and Self-Care</title>
+<style>
+    .custom-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    p,li{
+        font-size: 16px;
+    }
+    body{
+        background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+            height: 100vh"
+    }
+    .bg-custom-1 {
+    background-color: rgba(235, 243, 239, 0.731);
+}
+    .bg-custom-2 {
+        background-color: rgba(81, 221, 210);
+    }
+    .bg-custom-3 {
+        background-color: rgba(215, 220, 225, 0.5);
+    }
+    .bg-custom-4 {
+        background-color: rgba(161, 232, 226, 1);
+    }
+    .bg-custom-5 {
+        background-color: rgba(110, 225, 124, 0.9);
+    }
+</style>
+
+<body>
+    <section class="container">
+
+        <div class="card bg-custom-1 rounded">
+            <div class="card-body">
+                <h1 class="card-title fs-1">Hello {{employee_name}},</h1>
+                <p class="card-text">Our stress detection system indicates that you are currently <strong><i><u>not experiencing significant stress</u></i></strong> . Congratulations on maintaining a positive well-being! Taking care of yourself is essential, and we encourage you to continue practicing healthy habits to support your overall well-being.</p>
+            </div>
+        </div>
+
+        <div><p></p></div>
+        
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card custom-card bg-custom-2 rounded shadow">
+                  <div class="card-body">
+                    <div class="card-header"><h2>Positive Well-being Tips</h2></div>
+                    <p><ul class="card-text">
+                        <li>Continue to engage in physical activity to stay healthy and energized.</li>
+                        <li>Practice relaxation techniques, such as deep breathing or mindfulness, for ongoing stress management.</li>
+                        <li>Take regular breaks to recharge and maintain a healthy work-life balance.</li>
+                        <li>Connect with others and maintain strong social connections.</li>
+                        <li>Engage in hobbies and activities that bring you joy and fulfillment.</li>
+                        <li>Prioritize self-care and set aside time for activities that promote well-being.</li>
+                    </ul>
+                </p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card custom-card bg-custom-3 rounded shadow">
+                  <div class="card-body">
+                    
+                    <div class="card-header"><h2 >Celebrate Your Success</h2></div>
+                    <p class="card-text">Celebrate your achievement in managing stress effectively! It's important to recognize and acknowledge your efforts in maintaining a healthy and balanced life. Keep up the great work!</p>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div><p></p></div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card custom-card bg-custom-4 rounded shadow">
+                  <div class="card-body">
+                    
+                    <div class="card-header"><h2 class="card-title">Support for Well-being</h2></div>
+                    <p class="card-text">We value your well-being, and our organization is committed to supporting you. Remember that maintaining a positive state of mind can have numerous benefits in both personal and professional aspects of life.</p>        
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card custom-card bg-custom-5 rounded shadow">
+                  <div class="card-body">
+                    
+                    <div class="card-header"><h2 class="card-title">Continued Support</h2></div>
+                    <p class="card-text">Even if you are not currently experiencing stress, we are here to support you. Feel free to reach out to your supervisor or HR department if you have any concerns or need assistance in any aspect of your well-being.</p>    
+                  </div>
+                </div>
+            </div>        
+        </div>
+
+    </section>
+</body>
+{% endblock content %}

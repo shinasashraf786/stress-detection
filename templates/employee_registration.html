@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Student Registration
+{% endblock title  %}
+
+{% block content %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    .bt {
+            display: inline-block;
+            padding: 0.6rem 1.6rem;
+            background: var(--main-color);
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem var(--main-color);
+            font-size: 2rem;
+            color: var(--second-bg-color);
+            letter-spacing: .1rem;
+            font-weight: 600;
+            transition: 2s ease;
+            text-decoration: none;
+        }
+
+        .bt:hover {
+            box-shadow: none;
+        }
+</style>
+<section class="container" >
+    <h2 style="font-size: 30px; margin-bottom: 20px;">Employee Registration</h2>
+    <form class="form-horizontal" method="post" action="/register_employee">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="name" name="name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="department">Department:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="department" name="department" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="email" id="email" name="email" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="password">Password:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="password" id="password" name="password" required>
+            </div>
+        </div>
+        
+               
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="bt" type="submit" value="Register">
+            </div>
+        </div>
+    </form>
+</section>
+{% endblock content %}

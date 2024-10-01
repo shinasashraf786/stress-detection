@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>EmoSpot</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content=""> 
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename= '/css/bootstrap.min.css') }}">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename= '/css/style.css') }}">
+
+</head>
+<body>
+    <div class="banner_section layout_padding">
+      <div class="container-fluid">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="banner_taital">
+                    <h1 class="dance_text">EmoSpot</h1>
+                    <p class="consectetur_text">EmoSpot is an application that helps you detect stress levels through facial analysis. 
+                      By using advanced machine learning techniques, EmoSpot can analyze your facial expressions and provide 
+                      insights into your stress levels.</p>
+                      <p>To get started, click the button below to begin stress detection.</p>
+                      
+                    <div class="about_bt"><a href="/login">Login</a></div>
+                    
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="image_1"><img src="{{url_for('static', filename= '/images/img-1.png') }}"></div>
+                </div>
+              </div>
+            </div>
+                       
+        </div>
+      </div>
+    </div>
+
+    </body>
+
+</html>

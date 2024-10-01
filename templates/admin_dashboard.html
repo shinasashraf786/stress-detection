@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title  %}
+Admin Dashboard
+{% endblock title  %}
+
+{% block content %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<style>
+            .buttons {
+            margin-top: 4rem;
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+        }
+        .bt {
+            display: inline-block;
+            padding: 1.6rem 2.6rem;
+            background: var(--main-color);
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem var(--main-color);
+            font-size: 2rem;
+            color: var(--second-bg-color);
+            letter-spacing: .1rem;
+            font-weight: 600;
+            transition: 2s ease;
+            text-decoration: none;
+        }
+</style>
+
+<section class="container">
+    <div class="buttons">
+        <a href="{{ url_for('register_employee') }}" class="bt">Employee Restration</a>
+        <a href="{{ url_for('view_employees') }}" class="bt">Employee Details</a>
+       
+    </div>
+</section>
+
+{% endblock content %}
+
+
+
+

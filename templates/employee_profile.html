@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    .label {
+        display: inline-block;
+        width: 150px;
+        color: black; 
+        font-weight: bold;
+        text-align: left;
+        font-size: 16px;
+    }
+    .info {
+        display: inline-block;
+        width: 200px; 
+    }
+    .left-section,
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width:50%;
+            float: left;
+            position: relative;
+            
+    }        
+    .right-section {
+        align-items: center;
+        justify-content: center;
+    }
+    .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+        .button {
+            margin-top: 4rem;
+            display: flex; 
+            justify-content: center;            
+            padding-left: 1px;
+        }
+</style>
+
+    <title>Employee Profile</title>
+    
+    <section class="container">        
+                   
+
+        <div class="content"> 
+            <div class="left-section">
+                <h3>Welcome, {{ employee.name }}</h3>
+                <br><br>
+                <p>
+                    <strong class="label">ID:</strong>
+                    <span class="info">{{ employee.id }}</span>
+                </p>
+                <p>
+                    <strong class="label">Name:</strong>
+                    <span class="info" id="employeeName">{{ employee.name }}</span>
+                </p>        
+                <p>
+                    <strong class="label">Email:</strong>
+                    <span class="info">{{ employee.email }}</span>
+                </p>
+                <p>
+                    <strong class="label">Department:</strong>
+                    <span class="info">{{ employee.department }}</span>
+                </p>
+
+                <div class="button">
+
+                <a href="{{ url_for('predict_stress', employee_name=employee.name,employee_id=employee.id) }}" id="predictBtn" class = "btn" style="display: none;">Evaluate your imotions </a>
+            </div>
+       
+            </div>
+
+            <div class="right-section">          
+                <p style="font-size: 28px;">Upload Your imotions here!!!</p>
+
+                <button id="startBtn">Start Recording</button>
+                <div>
+                    <video id="videoPlayer" controls></video>
+                </div>
+            </div> 
+        </div>
+
+</section>
+<!-- templates/index.html -->
+
+<script>
+    const startBtn = document.getElementById('startBtn');
+    const videoPlayer = document.getElementById('videoPlayer');
+    let mediaRecorder;
+    let recordedChunks = [];
+
+    startBtn.addEventListener('click', async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = (event) => {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+            }
+        };
+
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            recordedChunks = [];
+            const videoUrl = URL.createObjectURL(blob);
+            videoPlayer.src = videoUrl;
+            const employeeName = "{{ employee.id }}";
+            uploadVideo(blob, employeeName);  
+            
+            // Show the "Predict" button after recording is done
+            const predictBtn = document.getElementById('predictBtn');
+            predictBtn.style.display = 'block';
+        };
+
+        mediaRecorder.start();
+
+        // Stop recording after 10 seconds
+        setTimeout(() => {
+            mediaRecorder.stop();
+            stream.getTracks().forEach(track => track.stop());
+        }, 5000);
+    });
+
+    async function uploadVideo(blob,employeeName) {
+        const formData = new FormData();
+        formData.append('video', blob);
+        formData.append('employeeName', employeeName);
+
+        // Send the video blob to the server using Fetch API or other methods
+        try {
+            const response = await fetch('/save_video', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Handle the response if needed
+        } catch (error) {
+            console.error('Error uploading video:', error);
+        }
+    }
+</script>
+
+
+{% endblock content %}
